@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace ProyectoCurso\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
