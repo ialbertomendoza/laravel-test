@@ -2,10 +2,6 @@
 
 namespace ProyectoCurso\Http\Controllers;
 
-use Illuminate\Http\Request;
-use ProyectoCurso\Http\Requests;
-use ProyectoCurso\Http\Controllers\Controller;
-
 class HomeController extends Controller
 {
     /**
