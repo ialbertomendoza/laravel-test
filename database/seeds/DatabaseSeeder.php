@@ -2,6 +2,8 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
+use ProyectoCurso\User;
+use ProyectoCurso\Post;
 
 class DatabaseSeeder extends Seeder
 {
@@ -12,10 +14,17 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        Model::unguard();
 
-        factory(ProyectoCurso\User::class, 10)->create();
+        # Reinicia contenido de tablas
+        User::truncate();
+        Post::truncate();
 
-        Model::reguard();
+        # Genera un post por cada usuario creado
+        factory(User::class, 10)->create()->each(function ($user){
+            $post = factory(Post::class)->make();
+            $user->posts()->save($post);
+        });
+
+        
     }
 }
