@@ -12,4 +12,7 @@
 */
 
 Route::get('/', 'HomeController@index');
-Route::get('post/{id}', 'PostController@show');
+Route::get('post/{id}', [
+	'uses' => 'PostController@show',
+	'as' => 'post_show_path'
+	]);
