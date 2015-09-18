@@ -15,7 +15,8 @@ class CreatePostTable extends Migration
         Schema::create('posts', function ($table)
         {
             $table->increments('id');
-            $table->string('name');
+            $table->string('title');
+            $table->text('body');
             $table->integer('author_id');
             $table->timestamps();
         });
