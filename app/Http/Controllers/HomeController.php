@@ -2,6 +2,8 @@
 
 namespace ProyectoCurso\Http\Controllers;
 
+use ProyectoCurso\Post;
+
 class HomeController extends Controller
 {
     /**
@@ -11,7 +13,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $posts = Post::with('author')->get(); // Retorna información de relación
+        # $posts = Post::all(); // Retorna sólo información de la entidad consultada
+
+        # return $posts;
+
+        return view('home', ['posts' => $posts]);
     }
 
     /**
