@@ -10,8 +10,8 @@ class Post extends Model
 	 * Establece relación entre esquema
 	 * @return [type] [description]
 	 */
-    public function user()
+    public function author()
     {
-    	return $this->belongsTo(User::class);
+    	return $this->belongsTo(User::class, 'author_id');
     }
 }
