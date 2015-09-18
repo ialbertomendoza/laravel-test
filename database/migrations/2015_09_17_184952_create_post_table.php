@@ -12,7 +12,7 @@ class CreatePostTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function ($table)
+        Schema::create('posts', function ($table)
         {
             $table->increments('id');
             $table->string('name');
