@@ -22,6 +22,6 @@ $factory->define(ProyectoCurso\User::class, function (Faker\Generator $faker) {
 
 $factory->define(ProyectoCurso\Post::class, function (Faker\Generator $faker) {
     return [
-        'name' => $faker->name
+        'name' => $faker->sentence()
     ];
 });
