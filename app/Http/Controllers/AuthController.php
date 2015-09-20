@@ -15,7 +15,7 @@ class AuthController extends Controller
      */
     public function index()
     {
-        //
+        return view('auth');
     }
 
     /**
@@ -36,7 +36,7 @@ class AuthController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request->all());
     }
 
     /**
