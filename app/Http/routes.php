@@ -16,3 +16,4 @@ Route::get('post/{id}', [
 	'uses' => 'PostController@show',
 	'as' => 'post_show_path'
 	]);
+Route::get('auth','AuthController@index');
