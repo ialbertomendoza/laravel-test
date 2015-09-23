@@ -3,8 +3,7 @@
 namespace ProyectoCurso\Http\Controllers;
 
 use Illuminate\Http\Request;
-use ProyectoCurso\Http\Requests;
-use ProyectoCurso\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
@@ -36,7 +35,13 @@ class AuthController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
+        //dd($request->get('email'));
+        if(!Auth::attempt($request->only(['email', 'password'])))
+        {
+            return redirect()->route('auth_show_path')->withErrors(['No encontramos al usuario']);
+        }
+
+        return 'Listo';
     }
 
     /**
