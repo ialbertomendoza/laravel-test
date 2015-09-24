@@ -28,6 +28,18 @@ Route::group(['middleware'=>'auth'], function (){
 		'uses' => 'PostController@show',
 		'as' => 'post_show_path'
 		])->where('id', '[0-9]+');
+	Route::get('post/{id}/edit', [
+		'uses' => 'PostController@edit',
+		'as' => 'post_edit_path'
+		])->where('id', '[0-9]+');
+	Route::patch('post/{id}/edit', [
+		'uses' => 'PostController@update',
+		'as' => 'post_patch_path'
+		])->where('id', '[0-9]+');
+	Route::delete('post/{id}/edit', [
+		'uses' => 'PostController@destroy',
+		'as' => 'post_delete_path'
+		])->where('id', '[0-9]+');
 });
 
 Route::group(['prefix'=>'api'], function (){
