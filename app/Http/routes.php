@@ -16,10 +16,18 @@ Route::group(['middleware'=>'auth'], function (){
 		'uses' => 'HomeController@index',
 		'as' => 'home_path'
 		]);
+	Route::get('post/create', [
+		'uses' => 'PostController@create',
+		'as' => 'post_create_path'
+		]);
+	Route::post('post/create', [
+		'uses' => 'PostController@store',
+		'as' => 'post_create_path', // No hay conflicto con los nombres de las rutas pues los métodos son distintos
+		]);
 	Route::get('post/{id}', [
 		'uses' => 'PostController@show',
 		'as' => 'post_show_path'
-		]);
+		])->where('id', '[0-9]+');
 });
 
 Route::group(['prefix'=>'api'], function (){

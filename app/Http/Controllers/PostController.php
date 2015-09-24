@@ -3,6 +3,8 @@
 namespace ProyectoCurso\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Validator;
 use ProyectoCurso\Http\Requests;
 use ProyectoCurso\Http\Controllers\Controller;
 
@@ -27,7 +29,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('posts.create');
     }
 
     /**
@@ -38,7 +40,25 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'title' => 'required',
+            'body' => 'required',
+            ]);
+
+        if ($validator->fails())
+        {
+            return redirect()
+                ->route('post_create_path')
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        $post = new Post;
+        $post->title = $request->get('title');
+        $post->body = $request->get('body');
+        $post->author_id = Auth::id();
+        $post->save();
+        return redirect()->route('post_show_path', $post->id);
     }
 
     /**
