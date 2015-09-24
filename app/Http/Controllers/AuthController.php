@@ -35,7 +35,10 @@ class AuthController extends Controller
      */
     public function store(Request $request)
     {
-        //dd($request->get('email'));
+        $this->validate($request, [
+            'email'     => 'required|email',
+            'password'  => 'required'
+            ]);
         if(!Auth::attempt($request->only(['email', 'password'])))
         {
             return redirect()->route('auth_show_path')->withErrors(['No encontramos al usuario']);

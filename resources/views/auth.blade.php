@@ -4,12 +4,17 @@
 
 	<h1>Iniciar sesión</h1>
 
-	@foreach( $errors->all() as $error )
-		{{ $error }}
-	@endforeach
+	@if($errors->has())
+		<div class="alert alert-danger">
+			<ul class="list-unstyled">
+			@foreach( $errors->all() as $error )
+				<li>{{ $error }}</li>
+			@endforeach
+			</ul>
+		</div>
+	@endif
 
 	<form class="{{ route('auth_store_path') }}" action="" method="post">
-		<!--<input type="hidden" value="_token" value="{{ csrf_token() }}">-->
 		{{ csrf_field() }}
 		<label for="email"></label>
 		<input class="form-control" type="text" name="email" value="">
