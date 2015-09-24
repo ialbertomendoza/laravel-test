@@ -3,6 +3,7 @@
 namespace ProyectoCurso\Http\Controllers;
 
 use ProyectoCurso\Post;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -13,6 +14,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+        dd(Auth::user()->name);
         $posts = Post::with('author')->get(); // Retorna información de relación
         # $posts = Post::all(); // Retorna sólo información de la entidad consultada
 
