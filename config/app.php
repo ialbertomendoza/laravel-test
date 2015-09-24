@@ -144,6 +144,7 @@ return [
         ProyectoCurso\Providers\AuthServiceProvider::class,
         ProyectoCurso\Providers\EventServiceProvider::class,
         ProyectoCurso\Providers\RouteServiceProvider::class,
+        ProyectoCurso\Providers\ViewComposerServiceProvider::class,
 
     ],
 

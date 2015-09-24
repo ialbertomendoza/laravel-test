@@ -6,6 +6,14 @@
 	<title>Main Pj</title>
 </head>
 <body>
-	@yield('content')
+	<div class="container">
+		@if($currentUser)
+			<a href="{{ route('auth_destroy_path') }}">Salir</a>
+		@else
+			<a href="{{ route('auth_show_path') }}">Iniciar sesión</a>
+		@endif
+		@yield('content')
+	</div>
 </body>
 </html>
+

@@ -12,7 +12,10 @@
 */
 
 Route::group(['middleware'=>'auth'], function (){
-	Route::get('/', 'HomeController@index');
+	Route::get('/', [
+		'uses' => 'HomeController@index',
+		'as' => 'home_path'
+		]);
 	Route::get('post/{id}', [
 		'uses' => 'PostController@show',
 		'as' => 'post_show_path'
